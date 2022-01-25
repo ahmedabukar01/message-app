@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home{
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+}
+.message-box{
+  height: 80%;
+  width:80%;
+  width: 250px;
+  background: chartreuse;
+  border-radius: 10px;
+  overflow: auto;
+  position:relative;
+  border:1px solid #fff;
+}
+.message-header{
+  height: 40px;
+  background:#333;
+  text-align: center;
+  line-height: 40px;
+  color:#fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.message-body{
+  height: calc(100% - 80px);
+  background:red;
+}
+.message-bottom{
+  position:absolute;
+  height: 40px;
+  bottom:0;
+  width: 100%;
+}
+.message-bottom form{
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  display: flex;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.message-bottom input{
+  border:none;
+  padding:5px;
+  height: 100%;
+  /* width:100%; */
+  font-size: 16px;
+  outline: none;
 }
