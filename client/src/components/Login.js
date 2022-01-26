@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({setOpenChat}) => {
     const [name,setName] = useState('');
     const [room,setRoom] = useState('');
 
@@ -11,14 +11,16 @@ const Login = () => {
         setRoom(e.target.value);
     }
 
-    const joinChat = () =>{
+    const joinChat = (e) =>{
+        e.preventDefault();
+        setOpenChat(true);
         // ......
     }
 
   return <div className="login">
-      <form>
+      <form onSubmit={joinChat}>
           <input type="text" required value={name} onChange={nameChanged} placeholder='Name'/>
-          <input type="text" required value={name} onChange={roomChanged} placeholder='Room'/>
+          <input type="text" required value={room} onChange={roomChanged} placeholder='Room'/>
           <button type="submit">Join Chat</button>
       </form>
   </div>;

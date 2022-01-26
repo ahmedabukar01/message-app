@@ -48,3 +48,35 @@
   font-size: 16px;
   outline: none;
 }
+
+/* login */
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login form{
+  background:#333;
+  border-radius: 10px;
+  height: 400px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login form input{
+  margin:10px 0;
+  border:none;
+  font-size: 16px;
+  height: 35px;
+  padding-left: 5px;
+  border-radius: 10px;
+  outline: none;
+}
+.login form button{
+  border:none;
+  border-radius: 5px;
+  font-size: 17px;
+}
