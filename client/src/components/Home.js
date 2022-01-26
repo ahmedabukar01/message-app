@@ -1,6 +1,7 @@
 import SendIcon from '@mui/icons-material/Send';
 
 const Home = () => {
+
   return (
       <div className='home'>
           <div className="message-box">
