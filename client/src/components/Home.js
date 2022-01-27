@@ -1,6 +1,15 @@
 import SendIcon from '@mui/icons-material/Send';
+import { useState } from 'react';
+import Message from './Message';
 
 const Home = () => {
+    const [value, setValue] = useState('');
+
+    const sendMsg = (e)=>{
+        e.preventDefault();
+
+        if(value) console.log(value);
+    }
 
   return (
       <div className='home'>
@@ -9,11 +18,11 @@ const Home = () => {
                   <span>Chatting Room</span>
               </div>
               <div className='message-body'>
-                  Hello..body
+                  <Message />
               </div>
               <div className='message-bottom'>
-                  <form>
-                      <input type="text" required placeholder="message here..." />
+                  <form onSubmit={sendMsg}>
+                      <input type="text" value={value} onChange={(e)=>setValue(e.target.value)} required placeholder="message here..." />
                         <SendIcon style={{marginTop: '10px', cursor:'pointer'}}/>
                   </form>
               </div>
