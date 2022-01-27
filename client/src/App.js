@@ -1,10 +1,8 @@
 import './App.css';
 import Home from './components/Home';
-import io from 'socket.io-client';
 import { useState } from 'react';
 import Login from './components/Login';
 
-// const socket = io.connect('http://localhost:5000');
 
 function App() {
   const [openChat, setOpenChat] = useState(false);

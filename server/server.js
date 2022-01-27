@@ -19,7 +19,11 @@ const io = new Server(server,{
 
 // socketio
 io.on('connection',(socket)=>{
-    console.log('connected')
+    console.log('connected user')
+
+    socket.on('userInfo',data=>{
+        console.log(data.name,data.room)
+    })
 })
 
 server.listen('5000',()=>{

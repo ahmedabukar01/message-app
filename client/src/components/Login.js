@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {userInfo} from '../hooks/socketio';
 
 const Login = ({setOpenChat}) => {
     const [name,setName] = useState('');
@@ -13,6 +14,8 @@ const Login = ({setOpenChat}) => {
 
     const joinChat = (e) =>{
         e.preventDefault();
+
+        userInfo(name,room)
         setOpenChat(true);
         // ......
     }
