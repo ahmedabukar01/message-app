@@ -1,6 +1,7 @@
 import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
 import Message from './Message';
+import {sendMessage} from '../hooks/socketio';
 
 const Home = () => {
     const [value, setValue] = useState('');
@@ -8,7 +9,9 @@ const Home = () => {
     const sendMsg = (e)=>{
         e.preventDefault();
 
-        if(value) console.log(value);
+        if(value){
+            sendMessage(value)
+        }
     }
 
   return (

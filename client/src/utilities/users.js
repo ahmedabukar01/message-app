@@ -2,12 +2,15 @@ const users = [];
 
 // getUser
  const saveUser = (name,room,id) => {
-    users.push({name,room,id});
+     const user = {name,room,id};
+     users.push(user);
+
 }
 
 // get user
  const getUser = (id)=>{
-    return users.filter(user => user.id === id);
+    const user = users.filter(user=> user.id === id);
+    return user;
 }
 
 module.exports = {

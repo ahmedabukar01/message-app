@@ -24,13 +24,13 @@ io.on('connection',(socket)=>{
     console.log('connected now')
 
     socket.on('userInfo',({name,room})=>{
-        const id = socket.it;
-        saveUser(name,room,id);
+        saveUser(name,room,socket.id);
     })
 
     // recieve msg
     socket.on('msg',msg=>{
         const user = getUser(socket.id);
+        
     })
 })
 
