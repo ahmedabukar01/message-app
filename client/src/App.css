@@ -1,3 +1,8 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
 .home{
   display: flex;
   align-items: center;
@@ -5,8 +10,7 @@
   height: 100vh;
 }
 .message-box{
-  height: 80%;
-  width:80%;
+  height: 400px;
   width: 250px;
   background: chartreuse;
   border-radius: 10px;
@@ -25,16 +29,18 @@
 }
 .message-body{
   height: calc(100% - 80px);
+  overflow-y: auto;
   background:red;
 }
 .message-bottom{
   position:absolute;
   height: 40px;
+  background:yellow;
   bottom:0;
   width: 100%;
 }
 .message-bottom form{
-  height: calc(100% - 10px);
+  height: 100%;
   width: calc(100% - 10px);
   display: flex;
   justify-content: space-between;
@@ -79,4 +85,29 @@
   border:none;
   border-radius: 5px;
   font-size: 17px;
+}
+
+/* msg body */
+.message{
+  width: 80%;
+  margin:5px;
+  display: flex;
+  flex-direction: column;
+}
+.message .title{
+  display: flex;
+  padding:0 5px;
+  justify-content: space-between;
+}
+.title .name{
+  font-size: 16px;
+}
+.title .date{
+  font-size: 13px;
+  color:#444;
+}
+.message .msg-body{
+  background: #fff;
+  border-radius: 5px;
+  padding: 5px;
 }
