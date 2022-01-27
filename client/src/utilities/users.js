@@ -1,4 +1,5 @@
 const users = [];
+
 // getUser
  const saveUser = (name,room,id) => {
     users.push({name,room,id});
@@ -11,5 +12,5 @@ const users = [];
 
 module.exports = {
     saveUser,
-    getUser
+    getUser,
 }

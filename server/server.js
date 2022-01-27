@@ -21,9 +21,11 @@ const io = new Server(server,{
 // socketio
 io.on('connection',(socket)=>{
     // const username
+    console.log('connected now')
 
-    socket.on('userInfo',data=>{
-        saveUser(data.name,data.room,socket.id);
+    socket.on('userInfo',({name,room})=>{
+        const id = socket.it;
+        saveUser(name,room,id);
     })
 
     // recieve msg
