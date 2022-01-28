@@ -10,7 +10,7 @@ const Home = () => {
         e.preventDefault();
 
         if(value !== ''){
-            sendMessage(value)
+            sendMessage(value);
         }
     }
 
