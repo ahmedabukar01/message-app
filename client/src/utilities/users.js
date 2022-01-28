@@ -9,11 +9,16 @@ const users = [];
 
 // get user
  const getUser = (id)=>{
-    const user = users.filter(user=> user.id === id);
-    return user;
+    return users.find(user=> user.id === id);
+}
+
+// all users
+const allUsers = ()=>{
+    return users;
 }
 
 module.exports = {
     saveUser,
     getUser,
+    allUsers
 }
