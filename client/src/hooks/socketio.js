@@ -14,8 +14,10 @@ export const sendMessage = (msg) =>{
     socket.emit('sendMsg', msg);
 }
 
-// recieve msg
 
+
+// recieve msg
 socket.on('getMsg',data=>{
-    console.log(data,'here');
 })
+
+

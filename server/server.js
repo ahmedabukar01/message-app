@@ -33,9 +33,10 @@ io.on('connection',(socket)=>{
     // recieve msg
     socket.on('sendMsg',msg=>{
         const user = getUser(socket.id);
-        
+
+        console.log('we are here')
         // send msg to dom
-        io.to(user.room).emit('getMsg',msgFormat(user,msg));
+        io.emit('getMsg',msgFormat(user,msg));
 
     })
 
