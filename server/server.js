@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const {Server} = require('socket.io');
 const cors = require('cors');
-const {saveUser,getUser, allUsers} = require('../client/src/utilities/users');
+const {saveUser,getUser, allUsers, msgFormat} = require('../client/src/utilities/users');
 
 const app = express();
 const server = http.createServer(app);
@@ -20,18 +20,25 @@ const io = new Server(server,{
 
 // socketio
 io.on('connection',(socket)=>{
+
     // const username
     console.log('connected now')
 
     socket.on('userInfo',({name,room})=>{
         saveUser(name,room,socket.id);
+
+        socket.join(room);
     })
 
     // recieve msg
-    socket.on('msg',msg=>{
+    socket.on('sendMsg',msg=>{
         const user = getUser(socket.id);
-        console.log(msg,user.name);
+        
+        // send msg to dom
+        io.to(user.room).emit('getMsg',msgFormat(user,msg));
+
     })
+
 })
 
 server.listen('5000',()=>{
