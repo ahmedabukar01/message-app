@@ -27,10 +27,16 @@ const Home = ({name}) => {
     useEffect(()=>{
         socket.on('receiveMsg',data=>{
             setMsg((prev)=>[...prev,data]);
+
         })
+
+        socket.on('msg',data=>{
+            setMsg((prev)=>[...prev,data]);
+        });
+
     },[socket])
 
-    socket.on('msg',message=>setMsg(message));
+    
 
   return (
       <div className='home'>

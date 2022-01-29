@@ -1,4 +1,3 @@
-const moment = require('moment');
 
 const users = [];
 
@@ -21,9 +20,6 @@ const allUsers = ()=>{
 
 // message format
 const msgFormat = (user,text)=>{
-    const time = moment().format('h:mm a');
-    console.log(time);
-    const data = {...user, text}
     return {
         user,
         text,

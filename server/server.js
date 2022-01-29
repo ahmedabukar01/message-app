@@ -17,7 +17,7 @@ const io = new Server(server,{
     }
 });
 
-const mainRoom = '';
+const admin = 'Admin';
 // socketio
 io.on('connection',(socket)=>{
 
@@ -30,7 +30,14 @@ io.on('connection',(socket)=>{
 
         // welcome
         const user = getUser(socket.id);
-        socket.broadcast.to(user.room).emit('msg',msgFormat(user,'Wecome Ahmed'))
+
+        socket.emit('msg',msgFormat(admin,`Welcome ${user.name}`))
+         
+        // user joined
+        socket.broadcast.to(user.room).emit('msg',msgFormat(admin,`${user.name} has joined`))
+
+        // 
+        
     })
 
 
