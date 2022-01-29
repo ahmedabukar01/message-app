@@ -1,9 +1,7 @@
-
-
-
-
+import {getSocket} from '../components/Home';
 // user info
-export const userInfo = (name,room,socket) =>{
+export const userInfo = (name,room) =>{
+    const socket = getSocket();
     socket.emit('userInfo', {name,room});
 }
 

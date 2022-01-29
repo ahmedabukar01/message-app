@@ -17,7 +17,7 @@ const io = new Server(server,{
     }
 });
 
-
+const mainRoom = '';
 // socketio
 io.on('connection',(socket)=>{
 
@@ -26,9 +26,13 @@ io.on('connection',(socket)=>{
 
     socket.on('userInfo',({name,room})=>{
         saveUser(name,room,socket.id);
-
         socket.join(room);
+
+        // welcome
+        const user = getUser(socket.id);
+        socket.broadcast.to(user.room).emit('msg',msgFormat(user,'Wecome Ahmed'))
     })
+
 
     // recieve msg
     socket.on('sendMsg',msg=>{
@@ -36,7 +40,7 @@ io.on('connection',(socket)=>{
 
         console.log('we are here')
         // send msg to dom
-        io.emit('getMsg',msgFormat(user,msg));
+        io.to(user.room).emit('receiveMsg',msgFormat(user,msg));
 
     })
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {userInfo} from '../hooks/socketio';
 
-const Login = ({setOpenChat}) => {
+const Login = ({setOpenChat, sendName}) => {
     const [name,setName] = useState('');
     const [room,setRoom] = useState('');
 
@@ -14,7 +14,7 @@ const Login = ({setOpenChat}) => {
 
     const joinChat = (e) =>{
         e.preventDefault();
-
+        sendName(name);
         userInfo(name,room)
         setOpenChat(true);
         // ......

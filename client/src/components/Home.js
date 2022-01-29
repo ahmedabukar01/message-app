@@ -1,13 +1,17 @@
 import SendIcon from '@mui/icons-material/Send';
-import { useState } from 'react';
-import {sendMessage} from '../hooks/socketio';
-
+import { useEffect, useState } from 'react';
+import Message from './Message';
 import io from 'socket.io-client';
 
 const socket = io.connect('http://localhost:5000');
 
-const Home = ({socket}) => {
+export function getSocket(){
+    return socket;
+}
+
+const Home = ({name}) => {
     const [value, setValue] = useState('');
+    const [msg,setMsg] = useState('');
 
     const sendMsg = (e)=>{
         e.preventDefault();
@@ -19,6 +23,15 @@ const Home = ({socket}) => {
         }
     }
 
+    // recieve msg
+    useEffect(()=>{
+        socket.on('receiveMsg',data=>{
+            setMsg((prev)=>[...prev,data]);
+        })
+    },[socket])
+
+    socket.on('msg',message=>setMsg(message));
+
   return (
       <div className='home'>
           <div className="message-box">
@@ -26,15 +39,7 @@ const Home = ({socket}) => {
                   <span>Chatting Room</span>
               </div>
               <div className='message-body'>
-                 <div className='message'>
-                    <div className='title'>
-                        <span className='name'>name</span>
-                        <span className='date'>9:34 am</span>
-                    </div>
-                    <div className='msg-body'>
-                     blla bala blala 
-                    </div>
-                 </div>
+                 {msg && <Message msg={msg} userName={name}/>}
               </div>
               <div className='message-bottom'>
                   <form onSubmit={sendMsg}>
@@ -48,3 +53,6 @@ const Home = ({socket}) => {
 };
 
 export default Home;
+
+
+

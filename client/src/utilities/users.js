@@ -1,10 +1,11 @@
+const moment = require('moment');
+
 const users = [];
 
 // getUser
  const saveUser = (name,room,id) => {
      const user = {name,room,id};
      users.push(user);
-     msgFormat(user,'waaw');
 
 }
 
@@ -20,8 +21,14 @@ const allUsers = ()=>{
 
 // message format
 const msgFormat = (user,text)=>{
+    const time = moment().format('h:mm a');
+    console.log(time);
     const data = {...user, text}
-    return data;
+    return {
+        user,
+        text,
+        time: 'wooo'
+    }
 }
 
 module.exports = {
