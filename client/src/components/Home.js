@@ -2,14 +2,20 @@ import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
 import {sendMessage} from '../hooks/socketio';
 
-const Home = () => {
+import io from 'socket.io-client';
+
+const socket = io.connect('http://localhost:5000');
+
+const Home = ({socket}) => {
     const [value, setValue] = useState('');
 
     const sendMsg = (e)=>{
         e.preventDefault();
 
         if(value !== ''){
-            sendMessage(value);
+            // send msg
+            socket.emit('sendMsg', value);  
+
         }
     }
 

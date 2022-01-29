@@ -19,8 +19,8 @@ const allUsers = ()=>{
 }
 
 // message format
-const msgFormat = (user,msg)=>{
-    const data = {...user, msg}
+const msgFormat = (user,text)=>{
+    const data = {...user, text}
     return data;
 }
 

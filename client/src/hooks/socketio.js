@@ -1,22 +1,22 @@
-import io from 'socket.io-client';
 
-const socket = io.connect('http://localhost:5000');
+
+
 
 // user info
-export const userInfo = (name,room) =>{
+export const userInfo = (name,room,socket) =>{
     socket.emit('userInfo', {name,room});
 }
 
-// send msg
-export const sendMessage = (msg) =>{
-    socket.emit('sendMsg', msg);
-}
+// // send msg
+// export const sendMessage = (msg) =>{
+//     socket.emit('sendMsg', msg);
+// }
 
 
 
-// recieve msg
-socket.on('getMsg',data=>{
+// // recieve msg
+// socket.on('getMsg',data=>{
     
-})
+// })
 
 
