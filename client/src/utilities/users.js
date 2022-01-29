@@ -3,8 +3,7 @@ const users = [];
 
 // getUser
  const saveUser = (name,room,id) => {
-     const user = {name,room,id};
-     users.push(user);
+     users.push({name,room,id});
 
 }
 
@@ -20,11 +19,11 @@ const allUsers = ()=>{
 
 // message format
 const msgFormat = (user,text)=>{
-    return {
-        user,
-        text,
-        time: 'wooo'
-    }
+  return {
+      user,
+      text,
+      time: 'waa'
+  }
 }
 
 module.exports = {

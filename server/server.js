@@ -47,7 +47,7 @@ io.on('connection',(socket)=>{
 
         console.log('we are here')
         // send msg to dom
-        io.to(user.room).emit('receiveMsg',msgFormat(user,msg));
+        io.to(user.room).emit('receiveMsg',msgFormat(user.name,msg));
 
     })
 

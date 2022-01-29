@@ -112,5 +112,8 @@
   padding: 5px;
 }
 .message#me{
+  float: right;
+}
+.message#me .msg-body{
   background:blue;
 }

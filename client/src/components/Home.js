@@ -1,6 +1,5 @@
 import SendIcon from '@mui/icons-material/Send';
 import { useEffect, useState } from 'react';
-import Message from './Message';
 import io from 'socket.io-client';
 
 const socket = io.connect('http://localhost:5000');
@@ -45,12 +44,25 @@ const Home = ({name}) => {
                   <span>Chatting Room</span>
               </div>
               <div className='message-body'>
-                 {msg && <Message msg={msg} userName={name}/>}
+                 {msg && (
+                        msg.map(user=>(
+                            <div className='message' id={name === user.user ? 'me': 'other'} key={user.text}>
+                                <div className='title'>
+                                    <span className='name'>{user.user}</span>
+                                    <span className='date'>{user.time}</span>
+                                </div>
+                                <div className='msg-body'>
+                                    {user.text}
+                                </div>
+                            </div> 
+                        ))
+                     
+                 )}
               </div>
               <div className='message-bottom'>
                   <form onSubmit={sendMsg}>
-                      <input type="text" value={value} onChange={(e)=>setValue(e.target.value)} required placeholder="message here..." />
-                        <SendIcon style={{marginTop: '10px', cursor:'pointer'}}/>
+                      <input type="text" name="input" value={value} onChange={(e)=>setValue(e.target.value)} required placeholder="message here..." />
+                        <SendIcon style={{marginTop: '10px', cursor:'pointer'}} onClick={sendMsg}/>
                   </form>
               </div>
           </div>
