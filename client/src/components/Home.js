@@ -15,7 +15,7 @@ const Home = ({name}) => {
     const sendMsg = (e)=>{
         e.preventDefault();
 
-        console.log(e.target.input);
+        e.target.msg.value = "";
 
         if(value !== ''){
             // send msg
@@ -43,11 +43,6 @@ const Home = ({name}) => {
 
     },[socket])
 
-    // user left 
-    socket.on('userLeft',data=>{
-        setMsg((prev)=>[...prev,data]);
-        console.log(data)
-    })
 
   return (
       <div className='home'>
@@ -73,7 +68,7 @@ const Home = ({name}) => {
               </div>
               <div className='message-bottom'>
                   <form onSubmit={sendMsg}>
-                      <input type="text" name="input" value={value} onChange={(e)=>setValue(e.target.value)} required placeholder="message here..." />
+                      <input type="text" name="msg" onChange={(e)=>setValue(e.target.value)} required placeholder="message here..." />
                         <SendIcon style={{marginTop: '10px', cursor:'pointer'}} onClick={sendMsg}/>
                   </form>
               </div>

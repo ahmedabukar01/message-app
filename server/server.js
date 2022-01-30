@@ -1,8 +1,9 @@
 const express = require('express');
 const http = require('http');
 const {Server} = require('socket.io');
+const path = require('path');
 const cors = require('cors');
-const {saveUser,getUser, removeUser, msgFormat} = require('../client/src/utilities/users');
+const {saveUser,getUser, removeUser, msgFormat} = require('./utilities/users');
 
 const app = express();
 const server = http.createServer(app);
@@ -18,6 +19,7 @@ const io = new Server(server,{
 });
 
 const admin = 'Admin';
+let userId = '';
 // socketio
 io.on('connection',(socket)=>{
 
@@ -27,6 +29,8 @@ io.on('connection',(socket)=>{
     socket.on('userInfo',({name,room})=>{
         saveUser(name,room,socket.id);
         socket.join(room);
+
+        userId = socket.id;
 
         // welcome
         const user = getUser(socket.id);
@@ -54,6 +58,7 @@ io.on('connection',(socket)=>{
     // user left the chat
     socket.on('disconnect',()=>{
         const user = removeUser(socket.id);
+        console.log('before',user)
 
         if(user){
             io.to(user.room).emit('userLeft',msgFormat(admin,`${user.user} has left the chat`))

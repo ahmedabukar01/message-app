@@ -1,3 +1,4 @@
+const moment = require('moment');
 
 const users = [];
 
@@ -22,16 +23,16 @@ const msgFormat = (user,text)=>{
   return {
       user,
       text,
-      time: 'waa'
+      time: moment().format('h:mm a')
   }
 }
 
 // remove user
 const removeUser = (id)=>{
-    const index = users.splice(id,1);
-    
+    const index = users.find(user=>user.id === id);
+
     if(index !== -1){
-        return index;
+        return users.splice(index,1)[0];
     }
 }
 
