@@ -56,14 +56,16 @@ io.on('connection',(socket)=>{
     })
 
     // user left the chat
-    socket.on('disconnect',()=>{
-        const user = removeUser(socket.id);
-        console.log('before',user)
+    socket.on('disconnecting',()=>{
+        const user = getUser(socket.id);
 
         if(user){
-            io.to(user.room).emit('userLeft',msgFormat(admin,`${user.name} has left the chat`))
-            console.log(user)
+         removeUser(user.id);
+         io.to(user.room).emit('userLeft',msgFormat(admin,`${user.name} has left the chat`));
         }
+
+        
+
     })
 
 })

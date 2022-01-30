@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-const users = [];
+let users = [];
 
 // getUser
  const saveUser = (name,room,id) => {
@@ -30,11 +30,7 @@ const msgFormat = (user,text)=>{
 
 // remove user
 const removeUser = (id)=>{
-    const index = users.find(user=>user.id === id);
-
-    if(index !== -1){
-        return users.splice(index,1)[0];
-    }
+    users = users.filter(user=>user.id !== id);
 }
 
 module.exports = {

@@ -32,6 +32,9 @@
   overflow-y: auto;
   background:red;
 }
+.scroll{
+  height: 100%;
+}
 .message-bottom{
   position:absolute;
   height: 40px;
