@@ -5,6 +5,7 @@ const users = [];
 // getUser
  const saveUser = (name,room,id) => {
      users.push({name,room,id});
+     console.log(users)
 
 }
 

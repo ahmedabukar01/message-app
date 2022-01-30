@@ -61,7 +61,7 @@ io.on('connection',(socket)=>{
         console.log('before',user)
 
         if(user){
-            io.to(user.room).emit('userLeft',msgFormat(admin,`${user.user} has left the chat`))
+            io.to(user.room).emit('userLeft',msgFormat(admin,`${user.name} has left the chat`))
             console.log(user)
         }
     })
