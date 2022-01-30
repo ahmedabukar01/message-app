@@ -26,9 +26,19 @@ const msgFormat = (user,text)=>{
   }
 }
 
+// remove user
+const removeUser = (id)=>{
+    const index = users.splice(id,1);
+    
+    if(index !== -1){
+        return index;
+    }
+}
+
 module.exports = {
     saveUser,
     getUser,
     allUsers,
-    msgFormat
+    msgFormat,
+    removeUser
 }

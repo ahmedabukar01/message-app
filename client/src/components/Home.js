@@ -15,6 +15,8 @@ const Home = ({name}) => {
     const sendMsg = (e)=>{
         e.preventDefault();
 
+        console.log(e.target.input);
+
         if(value !== ''){
             // send msg
             socket.emit('sendMsg', value);  
@@ -33,9 +35,19 @@ const Home = ({name}) => {
             setMsg((prev)=>[...prev,data]);
         });
 
+        // user left 
+        socket.on('userLeft',data=>{
+        setMsg((prev)=>[...prev,data]);
+        console.log(data)
+    })
+
     },[socket])
 
-    
+    // user left 
+    socket.on('userLeft',data=>{
+        setMsg((prev)=>[...prev,data]);
+        console.log(data)
+    })
 
   return (
       <div className='home'>

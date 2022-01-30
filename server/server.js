@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const {Server} = require('socket.io');
 const cors = require('cors');
-const {saveUser,getUser, allUsers, msgFormat} = require('../client/src/utilities/users');
+const {saveUser,getUser, removeUser, msgFormat} = require('../client/src/utilities/users');
 
 const app = express();
 const server = http.createServer(app);
@@ -49,6 +49,16 @@ io.on('connection',(socket)=>{
         // send msg to dom
         io.to(user.room).emit('receiveMsg',msgFormat(user.name,msg));
 
+    })
+
+    // user left the chat
+    socket.on('disconnect',()=>{
+        const user = removeUser(socket.id);
+
+        if(user){
+            io.to(user.room).emit('userLeft',msgFormat(admin,`${user.user} has left the chat`))
+            console.log(user)
+        }
     })
 
 })
